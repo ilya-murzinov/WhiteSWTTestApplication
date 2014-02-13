@@ -15,8 +15,9 @@ public class MainWindowView {
 	private TabFolder inputControlsFolder;
 	
 	private Combo combo;
+	private Combo editableCombo;
 	
-	public MainWindowView(String[] comboboxItems)	{
+	public MainWindowView()	{
 		display = new Display();
 		
 		shell = new Shell(display);
@@ -32,14 +33,19 @@ public class MainWindowView {
 		inputControlsFolder = new TabFolder(folder, SWT.NONE);
 		
 		combo = new Combo(listControlsFolder, SWT.READ_ONLY);
-		combo.setItems(comboboxItems);
-		Rectangle clientArea = shell.getClientArea();
-		combo.setBounds (clientArea.x, clientArea.y, 200, 200);
-		combo.setData("AUTOMATIONID", "AComboBox");
+		Rectangle clientArea = listControlsFolder.getClientArea();
+		combo.setBounds(clientArea.x, clientArea.y, 200, 200);
+		editableCombo = new Combo(listControlsFolder, SWT.NONE);
+		editableCombo.setBounds(clientArea.x, clientArea.y + combo.getSize().y + 5, 200, 200);
 		
 		listControls.setControl(listControlsFolder);
 		shell.pack();
 		shell.setSize(800, 450);
+	}
+	
+	public void setComboboxItems(String[] items) {
+		combo.setItems(items);
+		editableCombo.setItems(items);
 	}
 	
 	public void show() {

@@ -10,5 +10,6 @@ public class MainWindowController {
 	public MainWindowController(MainWindowModel model, MainWindowView view) {
 		this.view = view;
 		this.model = model;
+		view.setComboboxItems(model.comboboxItems);
 	}
 }
