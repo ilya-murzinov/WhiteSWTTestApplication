@@ -1,7 +1,6 @@
 package Model;
 
 public class MainWindowModel {
-	//TODO: add something here
 	public String[] comboboxItems;
 	
 	public MainWindowModel() {
