@@ -1,13 +1,13 @@
 package View;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 public class MainWindowView {
 	private Display display;
 	private Shell shell;
+    private GridLayout mainLayout = new GridLayout();
 	private GridLayout layout = new GridLayout();
 	
 	private Menu menuBar, fileMenu;
@@ -24,7 +24,7 @@ public class MainWindowView {
 		
 		shell = new Shell(display);
 		shell.setText("MainWindow");
-		shell.setLayout(layout);		
+		shell.setLayout(mainLayout);
 		
 		menuBar = new Menu(shell, SWT.BAR);
 		menuHeaderItem = new MenuItem(menuBar, SWT.CASCADE);
@@ -55,6 +55,7 @@ public class MainWindowView {
 	public class ListControlsTab {		
 		private TabItem listControls;		
 		private TabFolder listControlsFolder;
+        private List list;
 		private Combo combo;
 		private Combo editableCombo;
 		
@@ -62,14 +63,18 @@ public class MainWindowView {
 			listControls = new TabItem(folder, SWT.NONE);
 			listControls.setText("List Controls");
 			listControlsFolder = new TabFolder(folder, SWT.NONE);
+            layout.numColumns = 2;
 			listControlsFolder.setLayout(layout);
-			
+
+            list = new List(listControlsFolder, SWT.V_SCROLL | SWT.BORDER);
 			combo = new Combo(listControlsFolder, SWT.READ_ONLY);
 			editableCombo = new Combo(listControlsFolder, SWT.NONE);
 			
 			listControls.setControl(listControlsFolder);
 		}
-		
+		public  void setListItems(String[] items) {
+            list.setItems(items);
+        }
 		public void setComboboxItems(String[] items) {
 			combo.setItems(items);
 			editableCombo.setItems(items);

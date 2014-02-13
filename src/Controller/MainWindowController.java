@@ -12,5 +12,6 @@ public class MainWindowController {
 		this.model = model;
 		view.listControlsTab.setComboboxItems(model.comboboxItems);
 		view.inputControlsTab.setTextBox("123");
+        view.listControlsTab.setListItems(model.listItems);
 	}
 }
