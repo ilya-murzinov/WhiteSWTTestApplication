@@ -1,7 +1,10 @@
-package Controller;
+/**
+ * Created by Murzinov Ilya on 2/14/14.
+ */
+package main.java.com.TestStack.White.SWTTestApplication.Controller;
 
-import View.MainWindowView;
-import Model.*;
+import main.java.com.TestStack.White.SWTTestApplication.View.MainWindowView;
+import main.java.com.TestStack.White.SWTTestApplication.Model.*;
 
 public class MainWindowController {
 	private MainWindowView view;
