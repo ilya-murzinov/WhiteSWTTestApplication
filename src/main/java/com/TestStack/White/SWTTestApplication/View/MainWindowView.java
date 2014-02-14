@@ -1,7 +1,7 @@
 /**
  * Created by Murzinov Ilya on 2/14/14.
  */
-package main.java.com.TestStack.White.SWTTestApplication.View;
+package com.TestStack.White.SWTTestApplication.View;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
