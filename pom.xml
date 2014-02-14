@@ -31,5 +31,10 @@
             <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
             <version>4.3</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
     </dependencies>
 </project>
