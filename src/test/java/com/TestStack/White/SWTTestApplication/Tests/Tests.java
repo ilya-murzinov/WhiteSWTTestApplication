@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class Tests {
     @Test
-    public void Test() {
+    public void ModelTest() {
         MainWindowModel model = new MainWindowModel();
         Assert.assertEquals(model.comboboxItems.length, 3);
     }
