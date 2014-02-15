@@ -7,4 +7,9 @@ before_install:
   - "export DISPLAY=:99.0"
   - sh -e /etc/init.d/xvfb start
 
-install: mvn -P Linux_64 test
+install:
+    mvn -P Linux_64 install
+    mvn -P Linux_64 test
+
+after_install:
+
