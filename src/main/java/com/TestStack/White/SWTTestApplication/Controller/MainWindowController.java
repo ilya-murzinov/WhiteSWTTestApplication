@@ -19,9 +19,10 @@ public class MainWindowController {
 		view.inputControlsTab.setTextBoxText("123");
         view.listControlsTab.setListItems(model.getListItems());
         view.listControlsTab.setChangeItemButtonMouseListener(changeItemButtonMouseListener);
+        view.setToolBarMouseListener(toolBarMouseListener);
 	}
 
-    public MouseListener changeItemButtonMouseListener = new MouseListener() {
+    private MouseListener changeItemButtonMouseListener = new MouseListener() {
         @Override
         public void mouseDoubleClick(MouseEvent e) {
 
@@ -30,6 +31,23 @@ public class MainWindowController {
         @Override
         public void mouseDown(MouseEvent e) {
             view.listControlsTab.setListItems(model.getChangedListItems());
+        }
+
+        @Override
+        public void mouseUp(MouseEvent e) {
+
+        }
+    };
+
+    private MouseListener toolBarMouseListener = new MouseListener() {
+        @Override
+        public void mouseDoubleClick(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseDown(MouseEvent e) {
+
         }
 
         @Override
