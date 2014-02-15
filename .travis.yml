@@ -11,4 +11,4 @@ install:
   - mvn -P Linux_64 test
 
 script:
-  -echo 'Skipping...'
+  - echo 'Skipping script...'
