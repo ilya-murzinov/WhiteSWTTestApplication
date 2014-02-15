@@ -14,7 +14,7 @@ public class Main {
 		MainWindowView view = new MainWindowView();
 		MainWindowController controller = 
 				new MainWindowController(model, view);
-		
+
 		view.show();
 	}
 }

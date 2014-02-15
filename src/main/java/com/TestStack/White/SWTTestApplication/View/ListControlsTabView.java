@@ -35,4 +35,12 @@ public class ListControlsTabView {
         combo.setItems(items);
         editableCombo.setItems(items);
     }
+
+    public void selectItemCombo(int index) {
+        combo.select(index);
+    }
+
+    public int getSelectionIndexCombo() {
+        return combo.getSelectionIndex();
+    }
 }
