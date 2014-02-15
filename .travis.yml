@@ -10,5 +10,5 @@ before_install:
 install:
   - mvn -P Linux_64 test
 
-after_install:
+script:
   -echo 'Skipping...'
