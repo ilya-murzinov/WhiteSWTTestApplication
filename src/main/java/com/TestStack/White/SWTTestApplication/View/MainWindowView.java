@@ -7,7 +7,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
-public class MainWindowView implements Runnable{
+public class MainWindowView {
 	private static Display display = new Display();
 	private Shell shell;
 
@@ -25,8 +25,8 @@ public class MainWindowView implements Runnable{
         menu = new MenuBarView(shell);
 
 		toolBar = new ToolBar(shell, SWT.BAR);
-		ToolItem toolBarItem = new ToolItem(toolBar, SWT.PUSH);
-		toolBarItem.setText("Button in toolbar");
+		ToolItem toolBarItem = new ToolItem(toolBar, SWT.NONE);
+        toolBarItem.setText("Button in toolbar");
 		
 		TabFolder folder = new TabFolder(shell, SWT.NONE);
         listControlsTab = new ListControlsTabView(shell, folder);
@@ -44,9 +44,4 @@ public class MainWindowView implements Runnable{
         }
         display.dispose();
 	}
-
-    @Override
-    public void run() {
-
-    }
 }

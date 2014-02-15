@@ -1,6 +1,7 @@
 package com.TestStack.White.SWTTestApplication.View;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
@@ -10,8 +11,9 @@ import org.eclipse.swt.widgets.*;
 public class ListControlsTabView {
     private TabItem listControls;
     private TabFolder listControlsFolder;
-    protected GridLayout layout = new GridLayout();
+    private GridLayout layout = new GridLayout();
     private List list;
+    public Button changeItemButtons;
     private Combo combo;
     private Combo editableCombo;
 
@@ -24,6 +26,8 @@ public class ListControlsTabView {
 
         list = new List(listControlsFolder, SWT.V_SCROLL | SWT.BORDER);
         combo = new Combo(listControlsFolder, SWT.READ_ONLY);
+        changeItemButtons = new Button(listControlsFolder, SWT.NONE);
+        changeItemButtons.setText("Change Items");
         editableCombo = new Combo(listControlsFolder, SWT.NONE);
 
         listControls.setControl(listControlsFolder);
@@ -31,6 +35,11 @@ public class ListControlsTabView {
     public  void setListItems(String[] items) {
         list.setItems(items);
     }
+
+    public void setChangeItemButtonMouseListener(MouseListener value) {
+        changeItemButtons.addMouseListener(value);
+    }
+
     public void setComboboxItems(String[] items) {
         combo.setItems(items);
         editableCombo.setItems(items);
@@ -42,5 +51,9 @@ public class ListControlsTabView {
 
     public int getSelectionIndexCombo() {
         return combo.getSelectionIndex();
+    }
+
+    public String[] getListItems() {
+        return list.getItems();
     }
 }
