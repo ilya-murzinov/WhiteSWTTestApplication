@@ -18,9 +18,14 @@ public class MainWindowView {
 	public InputControlsTabView inputControlsTab;
 	
 	public MainWindowView()	{
-		display = new Display();
-		
-		shell = new Shell(display);
+        try {
+		    display = new Display();
+		    shell = new Shell(display);
+        }
+        catch (Exception ex) {
+            shell = new Shell();
+        }
+
 		shell.setText("MainWindow");
 		shell.setLayout(mainLayout);
 
