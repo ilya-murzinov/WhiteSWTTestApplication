@@ -8,11 +8,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 public class MainWindowView implements Runnable{
-	private static Display display = new Display();;
+	private static Display display = new Display();
 	private Shell shell;
-    private GridLayout mainLayout = new GridLayout();
-	
-	private ToolBar toolBar;
+
+    private ToolBar toolBar;
 	private MenuBarView menu;
 	public ListControlsTabView listControlsTab;
 	public InputControlsTabView inputControlsTab;
@@ -20,7 +19,8 @@ public class MainWindowView implements Runnable{
 	public MainWindowView()	{
         shell = new Shell(display);
 		shell.setText("MainWindow");
-		shell.setLayout(mainLayout);
+        GridLayout mainLayout = new GridLayout();
+        shell.setLayout(mainLayout);
 
         menu = new MenuBarView(shell);
 
@@ -47,6 +47,6 @@ public class MainWindowView implements Runnable{
 
     @Override
     public void run() {
-        show();
+
     }
 }
