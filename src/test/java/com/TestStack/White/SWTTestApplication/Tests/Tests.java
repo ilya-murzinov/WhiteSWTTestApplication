@@ -8,11 +8,11 @@ import com.TestStack.White.SWTTestApplication.Controller.MainWindowController;
 import com.TestStack.White.SWTTestApplication.Model.MainWindowModel;
 import com.TestStack.White.SWTTestApplication.View.MainWindowView;
 import org.eclipse.swt.events.MouseEvent;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,33 +25,40 @@ public class Tests {
 
     @Test
     public void textBoxTest() {
-        Assert.assertEquals(model.getComboboxItems().length, 3);
-        Assert.assertEquals("123", view.inputControlsTab.getTextBox().getText());
+        assertEquals(model.getComboboxItems().length, 3);
+        assertEquals(model.getTextBoxTest(), view.inputControlsTab.getTextBox().getText());
         view.inputControlsTab.getTextBox().setText("123123asd");
-        Assert.assertEquals("123123asd", view.inputControlsTab.getTextBox().getText());
+        assertEquals("123123asd", view.inputControlsTab.getTextBox().getText());
+
+        //TODO: make this work
+        //TypedEvent eventMock = (TypedEvent) new EventObject(view.inputControlsTab.getTextBox());
+        //controller.textBoxModifyListener.modifyText((ModifyEvent) eventMock);
+        assertEquals("123123asd", model.getTextBoxTest());
     }
 
     @Test
     public void comboTest() {
         view.listControlsTab.getCombo().select(1);
-        Assert.assertEquals(1, view.listControlsTab.getCombo().getSelectionIndex());
+        assertEquals(1, view.listControlsTab.getCombo().getSelectionIndex());
     }
 
     @Test
     public void changeItemsTest() {
-        Assert.assertEquals(model.getListItems(), view.listControlsTab.getList().getItems());
+        assertEquals(model.getListItems(), view.listControlsTab.getList().getItems());
         when(mouseEventMock.getSource()).thenReturn(view.listControlsTab.getChangeItemButtons());
         controller.changeItemButtonMouseListener.mouseDown(mouseEventMock);
-        Assert.assertEquals(model.getChangedListItems(), view.listControlsTab.getList().getItems());
+        assertEquals(model.getChangedListItems(), view.listControlsTab.getList().getItems());
     }
 
     @Test
     public void buttonInToolBarTest() {
-        Assert.assertEquals("Button in toolbar", view.getToolBarItem().getText());
-        when(mouseEventMock.getSource()).thenReturn(view.getToolBarItem());
-        controller.toolBarMouseListener.mouseDown(mouseEventMock);
-        Assert.assertEquals("Selected", view.getToolBarItem().getText());
-        controller.toolBarMouseListener.mouseDown(mouseEventMock);
-        Assert.assertEquals("Unselected", view.getToolBarItem().getText());
+        assertEquals("Button in toolbar", view.getToolBarItem().getText());
+        when(mouseEventMock.getSource()).thenReturn(view.getToolBar());
+        view.getToolBarItem().setSelection(true);
+        controller.toolBarMouseListener.mouseUp(mouseEventMock);
+        assertEquals("Selected", view.getToolBarItem().getText());
+        view.getToolBarItem().setSelection(false);
+        controller.toolBarMouseListener.mouseUp(mouseEventMock);
+        assertEquals("Unselected", view.getToolBarItem().getText());
     }
 }

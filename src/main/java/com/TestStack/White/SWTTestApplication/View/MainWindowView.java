@@ -57,4 +57,8 @@ public class MainWindowView {
     public ToolItem getToolBarItem() {
         return toolBarItem;
     }
+
+    public ToolBar getToolBar() {
+        return toolBar;
+    }
 }
