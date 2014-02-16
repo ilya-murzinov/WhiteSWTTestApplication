@@ -39,8 +39,17 @@ public class Tests {
     }
 
     @Test
-    public void Test() {
-
+    public void allFieldsInTabViewsShouldBePrivateTest() {
+        Field[] fields = view.getClass().getFields();
+        for (Field f : fields) {
+            System.out.println(f.getType().getName());
+            Field[] fields1 = f.getType().getDeclaredFields();
+            for (Field f1 : fields1) {
+                System.out.println(f1.getName());
+                assertEquals(f1.getName() + " in class " + f.getClass().toString() + " is not private",
+                        Modifier.isPrivate(f1.getModifiers()), true);
+            }
+        }
     }
 
     @Test
