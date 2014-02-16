@@ -1,4 +1,4 @@
-package com.TestStack.White.SWTTestApplication.Tests;
+package com.TestStack.White.SWTTestApplication;
 
 /**
  * Created by Murzinov Ilya on 2/14/14.
@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+//TODO: separate this class into several specific ones
 @RunWith(JUnit4.class)
 public class Tests {
     MainWindowModel model = new MainWindowModel();
