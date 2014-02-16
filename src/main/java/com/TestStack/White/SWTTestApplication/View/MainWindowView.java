@@ -15,7 +15,9 @@ public class MainWindowView {
 	private Shell shell;
 
     private ToolBar toolBar;
+    private ToolItem toolBarItem;
 	private MenuBarView menu;
+
 	public ListControlsTabView listControlsTab;
 	public InputControlsTabView inputControlsTab;
 	
@@ -26,7 +28,7 @@ public class MainWindowView {
 
         menu = new MenuBarView(shell);
 		toolBar = new ToolBar(shell, SWT.BAR);
-		ToolItem toolBarItem = new ToolItem(toolBar, SWT.CHECK);
+		toolBarItem = new ToolItem(toolBar, SWT.CHECK);
         toolBarItem.setText("Button in toolbar");
 
         TabFolder folder = new TabFolder(shell, SWT.TOP);
@@ -50,5 +52,9 @@ public class MainWindowView {
 
     public void setToolBarMouseListener(MouseListener value) {
         toolBar.addMouseListener(value);
+    }
+
+    public ToolItem getToolBarItem() {
+        return toolBarItem;
     }
 }

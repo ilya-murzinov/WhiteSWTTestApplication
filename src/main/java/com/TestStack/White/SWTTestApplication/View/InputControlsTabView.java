@@ -27,12 +27,8 @@ public class InputControlsTabView {
         inputControls.setControl(composite);
     }
 
-    public String getTextBoxText()
+    public Text getTextBox()
     {
-        return textBox.getText();
-    }
-    public void setTextBoxText(String value)
-    {
-        textBox.setText(value);
+        return textBox;
     }
 }

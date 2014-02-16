@@ -3,10 +3,9 @@ package com.TestStack.White.SWTTestApplication.Controller;
 /**
  * Created by Murzinov Ilya on 2/14/14.
  */
-import com.TestStack.White.SWTTestApplication.View.*;
-import com.TestStack.White.SWTTestApplication.Model.*;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseListener;
+import com.TestStack.White.SWTTestApplication.Model.MainWindowModel;
+import com.TestStack.White.SWTTestApplication.View.MainWindowView;
+import org.eclipse.swt.events.*;
 
 public class MainWindowController {
 	private final MainWindowView view;
@@ -15,44 +14,26 @@ public class MainWindowController {
 	public MainWindowController(final MainWindowModel model, final MainWindowView view) {
 		this.view = view;
 		this.model = model;
-		view.listControlsTab.setComboboxItems(model.getComboboxItems());
-		view.inputControlsTab.setTextBoxText("123");
-        view.listControlsTab.setListItems(model.getListItems());
-        view.listControlsTab.setChangeItemButtonMouseListener(changeItemButtonMouseListener);
+		view.listControlsTab.getCombo().setItems(model.getComboboxItems());
+        view.listControlsTab.getEditableCombo().setItems(model.getComboboxItems());
+		view.inputControlsTab.getTextBox().setText("123");
+        view.listControlsTab.getList().setItems(model.getListItems());
+        view.listControlsTab.getChangeItemButtons().addMouseListener(changeItemButtonMouseListener);
         view.setToolBarMouseListener(toolBarMouseListener);
 	}
 
-    private MouseListener changeItemButtonMouseListener = new MouseListener() {
-        @Override
-        public void mouseDoubleClick(MouseEvent e) {
-
-        }
-
+    public MouseListener changeItemButtonMouseListener = new MouseAdapter() {
         @Override
         public void mouseDown(MouseEvent e) {
-            view.listControlsTab.setListItems(model.getChangedListItems());
-        }
-
-        @Override
-        public void mouseUp(MouseEvent e) {
-
+            view.listControlsTab.getList().setItems(model.getChangedListItems());
         }
     };
 
-    private MouseListener toolBarMouseListener = new MouseListener() {
-        @Override
-        public void mouseDoubleClick(MouseEvent e) {
-
-        }
-
+    public MouseListener toolBarMouseListener = new MouseAdapter() {
         @Override
         public void mouseDown(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseUp(MouseEvent e) {
-
+            if (!view.getToolBarItem().getText().equals("Selected")) view.getToolBarItem().setText("Selected");
+            else view.getToolBarItem().setText("Unselected");
         }
     };
 }

@@ -1,7 +1,6 @@
 package com.TestStack.White.SWTTestApplication.View;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
@@ -17,47 +16,36 @@ public class ListControlsTabView {
     private Combo combo;
     private Combo editableCombo;
 
-    ListControlsTabView(TabFolder folder) {
-        listControls = new TabItem(folder, SWT.NONE);
-        listControls.setText("List Controls");
-        Composite composite = new Composite(folder, SWT.NONE);
-        composite.setLayout(new GridLayout(2, false));
-        composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-
-        list = new List(composite, SWT.V_SCROLL | SWT.BORDER);
-        combo = new Combo(composite, SWT.READ_ONLY);
-        changeItemButtons = new Button(composite, SWT.NONE);
-        changeItemButtons.setText("Change Items");
-        editableCombo = new Combo(composite, SWT.NONE);
-
-        listControls.setControl(composite);
-    }
-    public  void setListItems(String[] items) {
-        list.setItems(items);
-    }
-
-    public void setChangeItemButtonMouseListener(MouseListener value) {
-        changeItemButtons.addMouseListener(value);
+    public List getList() {
+        return list;
     }
 
     public Button getChangeItemButtons() {
         return changeItemButtons;
     }
 
-    public void setComboboxItems(String[] items) {
-        combo.setItems(items);
-        editableCombo.setItems(items);
+    public Combo getCombo() {
+        return combo;
     }
 
-    public void selectItemCombo(int index) {
-        combo.select(index);
+    public Combo getEditableCombo() {
+        return editableCombo;
     }
 
-    public int getSelectionIndexCombo() {
-        return combo.getSelectionIndex();
-    }
+    ListControlsTabView(TabFolder folder) {
+        listControls = new TabItem(folder, SWT.NONE);
+        listControls.setText("List Controls");
+        Composite composite = new Composite(folder, SWT.NONE);
+        composite.setLayout(new GridLayout(2, false));
+        composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-    public String[] getListItems() {
-        return list.getItems();
+        list = new List(composite, SWT.V_SCROLL | SWT.BORDER);
+        list.setBounds(0,0,50,100);
+        combo = new Combo(composite, SWT.READ_ONLY);
+        changeItemButtons = new Button(composite, SWT.NONE);
+        changeItemButtons.setText("Change Items");
+        editableCombo = new Combo(composite, SWT.NONE);
+
+        listControls.setControl(composite);
     }
 }
