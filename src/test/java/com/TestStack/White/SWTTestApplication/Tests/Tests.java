@@ -12,6 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -24,15 +27,27 @@ public class Tests {
     MouseEvent mouseEventMock = mock(MouseEvent.class);
 
     @Test
+    public void tabCountTest() {
+        Field[] fields = view.getClass().getFields();
+        int tabCount = 0;
+        for (Field f : fields) {
+            if (Modifier.isPublic(f.getModifiers()))
+                tabCount++;
+        }
+        assertEquals("Only TabView fields should be public in MainWindowView", 4, tabCount);
+    }
+
+    @Test
+    public void Test() {
+
+    }
+
+    @Test
     public void textBoxTest() {
         assertEquals(model.getComboboxItems().length, 3);
         assertEquals(model.getTextBoxTest(), view.inputControlsTab.getTextBox().getText());
         view.inputControlsTab.getTextBox().setText("123123asd");
         assertEquals("123123asd", view.inputControlsTab.getTextBox().getText());
-
-        //TODO: make this work
-        //TypedEvent eventMock = (TypedEvent) new EventObject(view.inputControlsTab.getTextBox());
-        //controller.textBoxModifyListener.modifyText((ModifyEvent) eventMock);
         assertEquals("123123asd", model.getTextBoxTest());
     }
 
