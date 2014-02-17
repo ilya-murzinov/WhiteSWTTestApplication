@@ -44,7 +44,7 @@ public class Tests {
             if (Modifier.isPublic(f.getModifiers()))
                 tabCount++;
         }
-        assertEquals("Only TabView fields should be public in MainWindowView", 4, tabCount);
+        assertEquals("Only TabView fields should be public in MainWindowView", 5, tabCount);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class Tests {
             System.out.println(f.getType().getName());
             Field[] fields1 = f.getType().getDeclaredFields();
             for (Field f1 : fields1) {
-                assertEquals(f1.getName() + " in class " + f.getClass().toString() + " is not private",
+                assertEquals(f1.getName() + " in class " + f.getType().toString() + " is not private",
                         Modifier.isPrivate(f1.getModifiers()), true);
             }
         }
@@ -111,5 +111,12 @@ public class Tests {
         view.getToolBarItem().setSelection(false);
         controller.toolBarMouseListener.mouseUp(mouseEventMock);
         assertEquals("Unselected", view.getToolBarItem().getText());
+    }
+
+    @Test
+    public void modalWindowTest() {
+        when(mouseEventMock.getSource()).thenReturn(view.scenariosTab.getButton());
+        //TODO: check that window opened
+        //controller.openDialogButtonMouseListener.mouseDown(mouseEventMock);
     }
 }

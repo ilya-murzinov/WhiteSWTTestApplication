@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.*;
 
 /**
  * Represents main window.
- * All other are created objects are combined together in this class.
+ * All other objects are created and combined together in this class.
  *
  * @author Murzinov Ilya
  */
@@ -22,21 +22,47 @@ public class MainWindowView {
 	private MenuBarView menu;
 
     //Only TabViews should be public
-	public ListControlsTabView listControlsTab;
-	public InputControlsTabView inputControlsTab;
+    /**
+     * Tab with list controls
+     */
+    public ListControlsTabView listControlsTab;
+    /**
+     * Tab with input controls
+     */
+    public InputControlsTabView inputControlsTab;
+    /**
+     * Tab with other controls
+     */
     public OtherControlsTabView otherControlsTab;
+    /**
+     * Tab with data grid
+     */
     public DataGridTabView dataGridTab;
-	
+    /**
+     * Tab with buttons
+     */
+    public ScenariosTabView scenariosTab;
+
+    /**
+     * This is the main constructor of View.
+     * It combines together all other *View objects into the shell.
+     *
+     */
 	public MainWindowView()	{
         shell = new Shell(display);
 		shell.setText("MainWindow");
-        shell.setLayout(new GridLayout(1, false));
+        shell.setLayout(new GridLayout(2, false));
         folder = new TabFolder(shell, SWT.FILL);
 
         menu = new MenuBarView(shell);
 
+        scenariosTab = new ScenariosTabView(shell);
+
         //TODO: somehow toolbar moved to bottom, this needs to be fixed
-        toolBar = new ToolBar(shell, SWT.BAR | SWT.TOP);
+        toolBar = new ToolBar(shell, SWT.FLAT | SWT.WRAP | SWT.RIGHT);
+        GridData data = new GridData();
+        data.horizontalSpan = 2;
+        toolBar.setLayoutData(data);
 		toolBarItem = new ToolItem(toolBar, SWT.CHECK);
         toolBarItem.setText("Button in toolbar");
 
@@ -50,7 +76,10 @@ public class MainWindowView {
 		shell.pack();
 		shell.setSize(800, 450);
 	}
-	
+
+    /**
+     * Displays resulting shell.
+     */
 	public void show() {
         shell.open();
         while (!shell.isDisposed()) {
@@ -59,6 +88,10 @@ public class MainWindowView {
         }
         display.dispose();
 	}
+
+    public static Display getDisplay() {
+        return display;
+    }
 
     public void setToolBarMouseListener(MouseListener value) {
         toolBar.addMouseListener(value);
