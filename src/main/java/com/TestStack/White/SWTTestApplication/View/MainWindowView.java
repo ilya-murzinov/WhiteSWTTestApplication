@@ -1,15 +1,17 @@
 package com.TestStack.White.SWTTestApplication.View;
 
-/**
- * Created by Murzinov Ilya on 2/14/14.
- */
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
+/**
+ * Represents main window.
+ * All other are created objects are combined together in this class.
+ *
+ * @author Murzinov Ilya
+ */
 public class MainWindowView {
 	private static Display display = new Display();
 	private Shell shell;
@@ -29,10 +31,12 @@ public class MainWindowView {
         shell = new Shell(display);
 		shell.setText("MainWindow");
         shell.setLayout(new GridLayout(1, false));
-        folder = new TabFolder(shell, SWT.TOP);
+        folder = new TabFolder(shell, SWT.FILL);
 
         menu = new MenuBarView(shell);
-		toolBar = new ToolBar(shell, SWT.BAR);
+
+        //TODO: somehow toolbar moved to bottom, this needs to be fixed
+        toolBar = new ToolBar(shell, SWT.BAR | SWT.TOP);
 		toolBarItem = new ToolItem(toolBar, SWT.CHECK);
         toolBarItem.setText("Button in toolbar");
 

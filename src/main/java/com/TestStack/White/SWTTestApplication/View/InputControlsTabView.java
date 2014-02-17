@@ -9,12 +9,18 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * Created by Murzinov Ilya on 2/14/14.
+ * Class represents tab with input controls
+ *
+ * @author Murzinov Ilya
  */
 public class InputControlsTabView {
 
     private Text textBox;
 
+    /**
+     * Constructs inputControlsTab, sets layout and places all controls in it
+     * @param folder - parent control in which this tab will be placed
+     */
     InputControlsTabView(TabFolder folder) {
         TabItem inputControls = new TabItem(folder, SWT.NONE);
         inputControls.setText("Input Controls");

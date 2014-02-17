@@ -6,7 +6,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 /**
- * Created by Murzinov Ilya on 2/14/14.
+ * Class represents tab with list controls
+ *
+ * @author Murzinov Ilya
  */
 public class ListControlsTabView {
     private TabItem listControls;
@@ -32,6 +34,10 @@ public class ListControlsTabView {
         return editableCombo;
     }
 
+    /**
+     * Constructs listControlsTab, sets layout and places all controls in it
+     * @param folder - parent control in which this tab will be placed
+     */
     ListControlsTabView(TabFolder folder) {
         listControls = new TabItem(folder, SWT.NONE);
         listControls.setText("List Controls");

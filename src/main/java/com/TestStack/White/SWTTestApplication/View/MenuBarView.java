@@ -6,7 +6,9 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * Created by Murzinov Ilya on 2/14/14.
+ * Class represents menu bar in MainWindow
+ *
+ * @author Murzinov Ilya
  */
 public class MenuBarView {
     private Menu menuBar, fileMenu;
