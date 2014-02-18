@@ -21,7 +21,7 @@ public class MainWindowController {
 		view.inputControlsTab.getTextBox().setText(model.getTextBoxTest());
         view.listControlsTab.getList().setItems(model.getListItems());
         view.listControlsTab.getChangeItemButtons().addMouseListener(changeItemButtonMouseListener);
-        view.setToolBarMouseListener(toolBarMouseListener);
+        view.getToolBar().addMouseListener(toolBarMouseListener);
         view.inputControlsTab.getTextBox().addModifyListener(textBoxModifyListener);
         view.scenariosTab.getButton().addMouseListener(openDialogButtonMouseListener);
 	}
